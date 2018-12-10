@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="Destiny2PgcrTimeline.Views.CharacterNameplateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Destiny2PgcrTimeline.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="64"
+    d:DesignWidth="316">
+
+    <Canvas Background="{x:Bind ViewModel.Emblem, Mode=OneWay}" Width="316" Height="64">
+        <TextBlock x:Name="tbClassName" Text="{x:Bind ViewModel.ClassName, Mode=OneWay}"
+                   FontSize="20" Canvas.Left="64" Canvas.Top="4" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" Width="146" Canvas.Left="158" Canvas.Top="4" FlowDirection="RightToLeft">
+            <TextBlock Foreground="#FF14DEDE" x:Name="tbPower" Text="{x:Bind ViewModel.Power, Mode=OneWay}" FontSize="24" TextAlignment="Right"/>
+            <TextBlock Foreground="#FF14DEDE" Text="✦" FontSize="24" TextAlignment="Right"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Canvas.Left="64" Canvas.Top="36">
+            <TextBlock x:Name="tbRace" Text="{x:Bind ViewModel.Race, Mode=OneWay}" FontSize="15" Margin="0,0,3,0"
+                       Foreground="White"/>
+            <TextBlock x:Name="tbGender" Text="{x:Bind ViewModel.Gender, Mode=OneWay}" FontSize="15"
+                       Foreground="White"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Width="146" Canvas.Left="158" Canvas.Top="36" FlowDirection="RightToLeft">
+            <TextBlock x:Name="tbLevel" Text="{x:Bind ViewModel.Level, Mode=OneWay}"
+                       Foreground="White" TextAlignment="Right" FontSize="15"/>
+            <TextBlock Text="Level" TextAlignment="Right" FontSize="15" Margin="3,0,0,0"
+                       Foreground="White"/>
+        </StackPanel>
+    </Canvas>
+</UserControl>

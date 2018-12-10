@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="Destiny2PgcrTimeline.Views.ActivityHistoryPaneView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Destiny2PgcrTimeline.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="720"
+    d:DesignWidth="1364">
+
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Border x:Name="char1Nameplate" Visibility="{x:Bind ViewModel.ShowCharacter1, Mode=OneWay}" Grid.Column="0" Margin="12"
+                    Tapped="Nameplate_Tapped">
+                <local:CharacterNameplateView ViewModel="{x:Bind ViewModel.Character1}"
+                                          Visibility="{x:Bind ViewModel.Character1.ElementVisibility, Mode=OneWay}"/>
+            </Border>
+            <Border x:Name="char2Nameplate" Visibility="{x:Bind ViewModel.ShowCharacter2, Mode=OneWay}" Grid.Column="1" Margin="12"
+                    Tapped="Nameplate_Tapped">
+                <local:CharacterNameplateView ViewModel="{x:Bind ViewModel.Character2}"
+                                          Visibility="{x:Bind ViewModel.Character2.ElementVisibility, Mode=OneWay}"/>
+            </Border>
+            <Border x:Name="char3Nameplate" Visibility="{x:Bind ViewModel.ShowCharacter3, Mode=OneWay}" Grid.Column="2" Margin="12"
+                    Tapped="Nameplate_Tapped">
+                <local:CharacterNameplateView ViewModel="{x:Bind ViewModel.Character3}"
+                                          Visibility="{x:Bind ViewModel.Character3.ElementVisibility, Mode=OneWay}"/>
+            </Border>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <ItemsControl x:Name="char1Activities" ItemsSource="{x:Bind ViewModel.Char1ActivityHistory}"
+                              Grid.Column="0" Margin="12" Visibility="{x:Bind ViewModel.ShowCharacter1, Mode=OneWay}"
+                              ItemTemplateSelector="{StaticResource PgcrCardDataTemplateSelector}"/>
+                <ItemsControl x:Name="char2Activities" ItemsSource="{x:Bind ViewModel.Char2ActivityHistory}"
+                              Grid.Column="1" Margin="12" Visibility="{x:Bind ViewModel.ShowCharacter2, Mode=OneWay}"
+                              ItemTemplateSelector="{StaticResource PgcrCardDataTemplateSelector}"/>
+                <ItemsControl x:Name="char3Activities" ItemsSource="{x:Bind ViewModel.Char3ActivityHistory}"
+                              Grid.Column="2" Margin="12" Visibility="{x:Bind ViewModel.ShowCharacter3, Mode=OneWay}"
+                              ItemTemplateSelector="{StaticResource PgcrCardDataTemplateSelector}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
